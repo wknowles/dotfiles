@@ -106,7 +106,7 @@ alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
     cdf () {
-        currFolderPath=$( /usr/bin/osascript <<"    EOT"
+        currFolderPath=$( /usr/bin/osascript <<EOT
             tell application "Finder"
                 try
             set currFolder to (folder of the front window as alias)
@@ -115,7 +115,7 @@ alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10
                 end try
                 POSIX path of currFolder
             end tell
-        EOT
+EOT
         )
         echo "cd to \"$currFolderPath\""
         cd "$currFolderPath"
