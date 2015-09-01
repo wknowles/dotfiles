@@ -21,13 +21,18 @@
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="________________________________________________________________________________\n| \w @ \h (\u) \n| => "
-    export PS2="| => "
+    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 #   Set Paths
 #   ------------------------------------------------------------
+    export PATH="$HOME/.rbenv/bin:$PATH"
     export PATH="$PATH:/usr/local/bin/"
-    export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+    export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:$PATH"
+
+# rbenv init
+# ------------------------------------------------------------
+
+    eval "$(rbenv init -)"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -42,8 +47,8 @@
 #   (this is all commented out as I use Mac Terminal Profiles)
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
 #   ------------------------------------------------------------
-#   export CLICOLOR=1
-#   export LSCOLORS=ExFxBxDxCxegedabagacad
+   export CLICOLOR=1
+   export LSCOLORS=ExFxBxDxCxegedabagacad
 
 
 #   -----------------------------
