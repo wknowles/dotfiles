@@ -239,4 +239,4 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #	Useful Goodies
 #
 
-alias tzc='TZ=us/Eastern date'			#show us eastern date and time
+alias tzc='echo "The date and time in Philly is: $(TZ=us/Eastern date)"' 	# show USA eastern date and time
