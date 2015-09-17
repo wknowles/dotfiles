@@ -234,3 +234,9 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;" #
 
 alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
 httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
+
+#
+#	Useful Goodies
+#
+
+alias tzc='TZ=us/Eastern date'			#show us eastern date and time
