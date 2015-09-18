@@ -240,3 +240,4 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #
 
 alias tzc='echo "The date and time in Philly is: $(TZ=us/Eastern date)"' 	# show USA eastern date and time
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'                      # open VLC
