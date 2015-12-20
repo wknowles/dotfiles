@@ -4,13 +4,8 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    export PATH="$HOME/.rbenv/bin:$PATH"
     export PATH="$PATH:/usr/local/bin/"
     export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:$PATH"
-
-# rbenv init
-# ------------------------------------------------------------
-    eval "$(rbenv init -)"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -108,7 +103,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
   #   Misc Alias'
   #   ---------------------------------------
 
-    alias bashrc='atom /Users/ckd/Documents/github/gists/f629d84718d5a89477ea/.bashrc'
+    alias bashrc='atom /Users/will/Documents/github/gists/f629d84718d5a89477ea/.bashrc'
     alias tze='echo "The date and time in Philly is: $(TZ=us/Eastern date)"' 	# show USA eastern date and time
     alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'                      # open VLC
     alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
