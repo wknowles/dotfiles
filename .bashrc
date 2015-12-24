@@ -7,11 +7,32 @@
     export PATH="$PATH:/usr/local/bin"
     export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:$PATH"
 
-#   Set Bash Completion
+#   Set Bash Completion and include completion features
 #   ------------------------------------------------------------
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+
+    if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+      . $(brew --prefix)/share/bash-completion/bash_completion
+    fi
+
+    # Case-insensitive globbing (used in pathname expansion)
+    shopt -s nocaseglob
+
+    # Ignore case while completing
+    set completion-ignore-case on
+
+    # Autocorrect typos in path names when using `cd`
+    shopt -s cdspell
+
+    # Enable some Bash 4 features when possible:
+    # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+    # * Recursive globbing, e.g. `echo **/*.txt`
+    for option in autocd globstar; do
+    	shopt -s "$option" 2> /dev/null;
+    done;
+
+    # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+    [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
