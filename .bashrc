@@ -130,7 +130,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
   #   ---------------------------------------
 
     alias quickserve='python -m SimpleHTTPServer 8080'
-    alias bashrc='subl /Users/will/Documents/github/gists/f629d84718d5a89477ea/.bashrc'
+    alias bashrc='subl ~/Documents/github/gists/f629d84718d5a89477ea/.bashrc'
     alias tze='echo "The date and time in Philly is: $(TZ=us/Eastern date)"' 	# show USA eastern date and time
     alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
     alias weather='curl wttr.in'
