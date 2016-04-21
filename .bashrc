@@ -8,6 +8,10 @@
 #   export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:$PATH"
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
+#   rbenv
+#   ------------------------------------------------------------
+    eval "$(rbenv init -)"
+
 #   Set Bash Completion and include completion features
 #   ------------------------------------------------------------
 
