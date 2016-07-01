@@ -32,7 +32,7 @@
     # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
     # * Recursive globbing, e.g. `echo **/*.txt`
     for option in autocd globstar; do
-    	shopt -s "$option" 2> /dev/null;
+        shopt -s "$option" 2> /dev/null;
     done;
 
     # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
@@ -128,15 +128,15 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   finderShowHidden:   Show hidden files in Finder
 #   finderHideHidden:   Hide hidden files in Finder
 #   -------------------------------------------------------------------
-    alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
-    alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
+    alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
+    alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
   #   ---------------------------------------
   #   Misc Alias'
   #   ---------------------------------------
 
     alias bashrc='subl $HOME/Documents/github/gists/f629d84718d5a89477ea/.bashrc'
-    alias tze='echo "The date and time in Philly is: $(TZ=us/Eastern date)"' 	# show USA eastern date and time
+    alias tze='echo "The date and time in Philly is: $(TZ=us/Eastern date)"'    # show USA eastern date and time
     alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
     alias weather='curl wttr.in'
     alias flushdns='sudo killall -HUP mDNSResponder'
