@@ -6,9 +6,9 @@
 
 - link:
     ~/.dotfiles: ''
-    # ~/.tmux.conf: tmux.conf
-    # ~/.vim: vim
-    # ~/.vimrc: vimrc
+    ~/.bashrc: bashrc
+    ~/.bash_profile: bash_profile
+    ~/.gemrc: gemrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
