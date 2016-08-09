@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Color Highlighter",
+		"Emmet",
+		"Markdown Preview",
+		"Package Control",
+		"Pretty JSON",
+		"Sass",
+		"SideBarEnhancements",
+		"StandardFormat",
+		"SublimeLinter",
+		"SublimeLinter-contrib-standard",
+		"SublimeLinter-jshint",
+		"Theme - Cobalt2",
+		"TrailingSpaces"
+	]
+}
