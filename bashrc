@@ -121,7 +121,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 
 
 #   spotlight: Search for a file using MacOS Spotlight's metadata
-#   -----------------------------------------------------------
+#   -------------------------------------------------------------
     spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 
@@ -131,9 +131,15 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
     alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
     alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
-  #   ---------------------------------------
-  #   Misc Alias'
-  #   ---------------------------------------
+
+#   mirror: use wget to mirror website. mirror(wait, url)
+#   -------------------------------------------------------------
+    mirror () { wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -w $1 $2; }
+
+
+#   ---------------------------------------
+#   Misc Alias'
+#   ---------------------------------------
 
     alias bashrc='subl $HOME/Documents/github/dotfiles/bashrc'
     alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
