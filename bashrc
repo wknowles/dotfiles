@@ -7,6 +7,7 @@
 #   export PATH="$PATH:/usr/local/bin"
 #   export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:$PATH"
 #   export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+    export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
 
 #   rbenv
 #   ------------------------------------------------------------
