@@ -1,3 +1,15 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = William Knowles
+    email = will@hollyandwill.com
+    signingkey = 1BA7A687
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+[push]
+    default = simple
 [color]
     branch = auto
     diff = auto
@@ -15,3 +27,27 @@
     added = yellow
     changed = green
     untracked = cyan
+[alias]
+    # one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+    a = add
+    ap = add -p
+    c = commit --verbose -S
+    ca = commit -a --verbose -S
+    cm = commit -m -S
+    cam = commit -a -m -S
+    m = commit --amend --verbose -S
+
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    s = status -s
+    co = checkout
+    cob = checkout -b
+    # list branches sorted by last modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
