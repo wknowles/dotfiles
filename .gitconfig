@@ -33,11 +33,11 @@
 
     a = add
     ap = add -p
-    c = commit --verbose -S
-    ca = commit -a --verbose -S
-    cm = commit -m -S
-    cam = commit -a -m -S
-    m = commit --amend --verbose -S
+    c = commit -S --verbose
+    ca = commit -S -a --verbose
+    cm = commit -S -m
+    cam = commit -S -a -m
+    m = commit -S --amend --verbose
 
     d = diff
     ds = diff --stat
