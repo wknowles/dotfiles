@@ -26,7 +26,8 @@
 	"line_padding_top": 1,
 	"rulers":
 	[
-		80
+		80,
+		140
 	],
 	"tab_size": 2,
 	"theme": "Cobalt2.sublime-theme",
