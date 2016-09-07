@@ -6,7 +6,7 @@
 #   ------------------------------------------------------------
 #   export PATH="$PATH:/usr/local/bin"
 #   export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:$PATH"
-#   export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+    export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
 
 #   rbenv
@@ -222,7 +222,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   Misc Alias'
 #   ---------------------------------------
 
-    alias bashrc='subl $HOME/Documents/github/dotfiles/bashrc'
+    alias bashrc='subl $HOME/Documents/github/dotfiles/.bashrc'
     alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
     alias weather='curl wttr.in'
     alias flushdns='sudo killall -HUP mDNSResponder'
