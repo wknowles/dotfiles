@@ -11,7 +11,7 @@
     ~/.gemrc: .gemrc
     ~/.gitconfig: .gitconfig
     ~/.gitexcludes: .gitexcludes
-    ~/Library/Application Support/Sublime Text 3/Packages/User: sublime-text-3/Packages/User
-
+    ~/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings: sublime-text-3/Package Control.sublime-settings
+    ~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings: sublime-text-3/Preferences.sublime-settings
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

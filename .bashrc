@@ -228,4 +228,5 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
     alias flushdns='sudo killall -HUP mDNSResponder'
     alias startjambo='sshuttle --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'
     alias startkidani='sshuttle --pidfile=/tmp/sshuttle.pid -Dr kidanivillage 0/0'
+    alias startckd='sshuttle --pidfile=/tmp/sshuttle.pid -Dr server@81.138.8.156 0/0'
     alias stopsshuttle='[[ -f /tmp/sshuttle.pid ]] && sudo kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
