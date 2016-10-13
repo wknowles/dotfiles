@@ -4,8 +4,8 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-#   export PATH="$PATH:/usr/local/bin"
-#   export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:$PATH"
+    # added by Anaconda3 4.2.0 installer
+    export PATH="/Users/will/anaconda3/bin:$PATH"
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
 
