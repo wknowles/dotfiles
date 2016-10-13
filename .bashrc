@@ -223,7 +223,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   ---------------------------------------
 
     alias bashrc='subl $HOME/Documents/github/dotfiles/.bashrc'
-    alias editHosts='sudo edit /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
+    alias editHosts='sudo subl /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
     alias weather='curl wttr.in'
     alias flushdns='sudo killall -HUP mDNSResponder'
     alias startjambo='sshuttle --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'

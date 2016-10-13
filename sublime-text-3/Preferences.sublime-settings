@@ -1,22 +1,14 @@
 {
+	"added_words":
+	[
+		"Geodesign"
+	],
 	"bold_folder_labels": true,
 	"caret_extra_bottom": 2,
 	"caret_extra_top": 2,
 	"caret_extra_width": 3,
 	"caret_style": "phase",
 	"color_scheme": "Packages/Theme - Cobalt2/cobalt2.tmTheme",
-	"theme": "Cobalt2.sublime-theme",
-	"highlight_line": true,
-	"indent_guide_options": [ "draw_normal", "draw_active" ],
-	"highlight_modified_tabs": true,
-	"line_padding_bottom": 1,
-	"line_padding_top": 1,
-	"wide_caret": true,
-	"caret_extra_bottom": 2,
-	"caret_extra_top": 2,
-	"caret_extra_width": 3,
-	"caret_style": "phase",
-	"bold_folder_labels": true,
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
 	"draw_white_space": "all",
@@ -44,6 +36,7 @@
 	],
 	"spell_check": true,
 	"tab_size": 2,
+	"theme": "Cobalt2.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"wide_caret": true
