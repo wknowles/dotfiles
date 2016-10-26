@@ -2,8 +2,8 @@
 [user]
 # Please adapt and uncomment the following lines:
     name = William Knowles
-	email = wknowles@users.noreply.github.com
-    signingkey = 1BA7A687
+	email = will@hollyandwill.com
+	signingkey = FCD154BC1BA7A687
 [filter "lfs"]
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f

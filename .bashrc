@@ -8,6 +8,7 @@
     export PATH="/Users/will/anaconda3/bin:$PATH"
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
+    export PATH="/Users/will/.scripts:$PATH"
 
 #   rbenv
 #   ------------------------------------------------------------
