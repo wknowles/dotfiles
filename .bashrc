@@ -4,11 +4,11 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    # added by Anaconda3 4.2.0 installer
-    export PATH="/Users/will/anaconda3/bin:$PATH"
-    export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+#   Note: reverse order of importance. the bottom export goes first.
     export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
-    export PATH="/Users/will/.scripts:$PATH"
+    export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+    export PATH="/Users/will/anaconda3/bin:$PATH"
+    export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
 #   ------------------------------------------------------------
