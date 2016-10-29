@@ -7,7 +7,8 @@
 #   Note: reverse order of importance. the bottom export goes first.
     export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
     export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-    export PATH="/Users/will/anaconda3/bin:$PATH"
+    # added by Miniconda3 4.2.11 installer
+    export PATH="/Users/will/miniconda3/bin:$PATH"
     export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
