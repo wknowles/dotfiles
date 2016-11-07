@@ -4,12 +4,11 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-#   Note: reverse order of importance. the bottom export goes first.
-    # kyngchaos gdal framwork - commented out as i am trying to use homebrew
-    # export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+    # kyngchaos gdal framwork
+    export PATH="$PATH:/Library/Frameworks/GDAL.framework/Programs"
     # conda messing with homebrew so I have taken it out of path until fixed
-    #export PATH="/Users/will/miniconda3/bin:$PATH"
+    export PATH="$PATH:/Users/will/miniconda3/bin"
     export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
