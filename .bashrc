@@ -8,7 +8,7 @@
     # kyngchaos gdal framwork
     export PATH="$PATH:/Library/Frameworks/GDAL.framework/Programs"
     # conda messing with homebrew so I have taken it out of path until fixed
-    export PATH="$PATH:/Users/will/miniconda3/bin"
+    # export PATH="$PATH:/Users/will/miniconda3/bin"
     export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
@@ -121,7 +121,6 @@ for al in `__git_aliases`; do
 done
 
 
-
 #   Set Default Editor (set to sublime text)
 #   ------------------------------------------------------------
     export EDITOR='subl -w'
@@ -215,7 +214,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
     alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
 
-#   mirror: use wget to mirror website. mirror(wait, url)
+#   mirror: use wget to mirror website. mirror(wait time, url)
 #   -------------------------------------------------------------
     mirror () { wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -w $1 $2; }
 
