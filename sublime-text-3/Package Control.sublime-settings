@@ -5,18 +5,17 @@
 	],
 	"installed_packages":
 	[
-		"Anaconda",
 		"Color Highlighter",
 		"Emmet",
-		"ESLint-Formatter",
 		"GitGutter",
 		"Markdown Preview",
 		"Package Control",
 		"Pretty JSON",
 		"Pretty Ruby",
 		"Sass",
+		"StandardFormat",
 		"SublimeLinter",
-		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-contrib-standard",
 		"Theme - Cobalt2",
 		"TrailingSpaces"
 	]

@@ -2,13 +2,20 @@
 #   ------------------------------------------------------------
     export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt)$ "
 
+#   Add color to terminal
+#   (this is all commented out as I use Mac Terminal Profiles)
+#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+#   ------------------------------------------------------------
+    export CLICOLOR=1
+    export LSCOLORS=ExFxBxDxCxegedabagacad
+
+    # Tell grep to highlight matches
+    export GREP_OPTIONS='--color=auto'
+
 #   Set Paths
 #   ------------------------------------------------------------
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
-    # kyngchaos gdal framwork
     export PATH="$PATH:/Library/Frameworks/GDAL.framework/Programs"
-    # conda messing with homebrew so I have taken it out of path until fixed
-    # export PATH="$PATH:/Users/will/miniconda3/bin"
     export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
@@ -40,6 +47,11 @@
 
     # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
     [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+#   Do not record duplicate commnands to bash history
+#   ------------------------------------------------------------
+
+    export HISTCONTROL=ignoreboth:erasedups
 
 #   Git
 #   ------------------------------------------------------------
@@ -120,7 +132,6 @@ for al in `__git_aliases`; do
     function_exists $complete_fnc && __git_complete g$al $complete_func
 done
 
-
 #   Set Default Editor (set to sublime text)
 #   ------------------------------------------------------------
     export EDITOR='subl -w'
@@ -129,14 +140,6 @@ done
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 #   ------------------------------------------------------------
     export BLOCKSIZE=1k
-
-#   Add color to terminal
-#   (this is all commented out as I use Mac Terminal Profiles)
-#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
-#   ------------------------------------------------------------
-    export CLICOLOR=1
-    export LSCOLORS=ExFxBxDxCxegedabagacad
-
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -165,7 +168,6 @@ mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and ju
 trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
-
 
 #   -------------------------------
 #   3.  FILE AND FOLDER MANAGEMENT
@@ -196,16 +198,14 @@ EOT
 #   4.  SEARCHING
 #   ---------------------------
 
-alias qfind="find . -name "                 # qfind:    Quickly search for file
-ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
-
+    alias qfind="find . -name "                 # qfind:    Quickly search for file
+    ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
+    ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
+    ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
 
 #   spotlight: Search for a file using MacOS Spotlight's metadata
 #   -------------------------------------------------------------
     spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
-
 
 #   finderShowHidden:   Show hidden files in Finder
 #   finderHideHidden:   Hide hidden files in Finder
@@ -213,11 +213,9 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
     alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
     alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
-
 #   mirror: use wget to mirror website. mirror(wait time, url)
 #   -------------------------------------------------------------
     mirror () { wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -w $1 $2; }
-
 
 #   ---------------------------------------
 #   Misc Alias'
