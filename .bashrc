@@ -3,7 +3,7 @@
     #export PS1='\$ '
     #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt) [\j] $ "
     #export PS1="(\j) \[\033[1;33m\]\w\[\033[m\]\$(git_prompt) $ "
-    export PS1="\e[45m \033[1;33m\w\e[m\e[45m $(git_prompt) (\j)\e[m  "
+    export PS1="\e[45m \033[1;33m\w \e[m\e  $(git_prompt) (\j)  "
     #export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\`git_prompt\`\`jobs_count\`\n\$ "
     #export PS1='\[\e[1;37m\]\w\[\e[m\]\[\e[1;33m\]\[\e[34m\] [\j]\[\e[m\] $ '
 
@@ -106,7 +106,7 @@
         elif [[ -n $dirty ]]; then
             echo -e '\033[1;31m'  # bold red
         else
-            echo -e '\033[1;38m'  # bold white
+            echo -e '\033[1;37m'  # bold white
         fi
     }
 
