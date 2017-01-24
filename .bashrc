@@ -1,6 +1,11 @@
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt)$ "
+    #export PS1='\$ '
+    #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt) [\j] $ "
+    #export PS1="(\j) \[\033[1;33m\]\w\[\033[m\]\$(git_prompt) $ "
+    export PS1="\e[45m \033[1;33m\w\e[m\e[45m $(git_prompt) (\j)\e[m  "
+    #export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\`git_prompt\`\`jobs_count\`\n\$ "
+    #export PS1='\[\e[1;37m\]\w\[\e[m\]\[\e[1;33m\]\[\e[34m\] [\j]\[\e[m\] $ '
 
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)
@@ -24,7 +29,6 @@
 
 #   Set Bash Completion and include completion features
 #   ------------------------------------------------------------
-
     if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
       . $(brew --prefix)/share/bash-completion/bash_completion
     fi
@@ -50,7 +54,6 @@
 
 #   Do not record duplicate commnands to bash history
 #   ------------------------------------------------------------
-
     export HISTCONTROL=ignoreboth:erasedups
 
 #   Git
@@ -103,7 +106,7 @@
         elif [[ -n $dirty ]]; then
             echo -e '\033[1;31m'  # bold red
         else
-            echo -e '\033[1;37m'  # bold white
+            echo -e '\033[1;38m'  # bold white
         fi
     }
 
@@ -132,6 +135,15 @@ for al in `__git_aliases`; do
     function_exists $complete_fnc && __git_complete g$al $complete_func
 done
 
+#   Show number of running / background jobs in command prompt
+#   ------------------------------------------------------------
+    function jobs_count {
+        cnt=$(jobs -l | wc -l)
+        if [ $cnt -gt 0 ]; then
+            echo -ne " \e[93m${cnt}\e[m"
+        fi
+    }
+
 #   Set Default Editor (set to sublime text)
 #   ------------------------------------------------------------
     export EDITOR='subl -w'
@@ -144,37 +156,35 @@ done
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
-
-alias cp='cp -iv'                           # Preferred 'cp' implementation
-alias mv='mv -iv'                           # Preferred 'mv' implementation
-alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
-alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
-alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
-alias ..='cd ../'                           # Go back 1 directory level
-alias ...='cd ../../'                       # Go back 2 directory levels
-alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
-alias ~="cd ~"                              # ~:            Go Home
-alias c='clear'                             # c:            Clear terminal display
-alias which='type -all'                     # which:        Find executables
-alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
-alias show_options='shopt'                  # Show_options: display bash options settings
-mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
-trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
-ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
-alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
+    alias cp='cp -iv'                           # Preferred 'cp' implementation
+    alias mv='mv -iv'                           # Preferred 'mv' implementation
+    alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+    alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+    alias less='less -FSRXc'                    # Preferred 'less' implementation
+    cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+    alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+    alias ..='cd ../'                           # Go back 1 directory level
+    alias ...='cd ../../'                       # Go back 2 directory levels
+    alias .3='cd ../../../'                     # Go back 3 directory levels
+    alias .4='cd ../../../../'                  # Go back 4 directory levels
+    alias .5='cd ../../../../../'               # Go back 5 directory levels
+    alias .6='cd ../../../../../../'            # Go back 6 directory levels
+    alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
+    alias ~="cd ~"                              # ~:            Go Home
+    alias c='clear'                             # c:            Clear terminal display
+    alias which='type -all'                     # which:        Find executables
+    alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+    alias show_options='shopt'                  # Show_options: display bash options settings
+    mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
+    trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
+    ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
+    alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
 #   -------------------------------
 #   3.  FILE AND FOLDER MANAGEMENT
 #   -------------------------------
-
-zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
-alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
+    zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
+    alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
@@ -197,7 +207,6 @@ EOT
 #   ---------------------------
 #   4.  SEARCHING
 #   ---------------------------
-
     alias qfind="find . -name "                 # qfind:    Quickly search for file
     ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
     ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
@@ -220,12 +229,14 @@ EOT
 #   ---------------------------------------
 #   Misc Alias'
 #   ---------------------------------------
-
     alias bashrc='subl $HOME/Documents/github/dotfiles/.bashrc'
+    alias backup='rsync -PhaEiz --stats '
     alias editHosts='sudo subl /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
-    alias weather='curl wttr.in'
     alias flushdns='sudo killall -HUP mDNSResponder'
     alias startjambo='sshuttle --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'
     alias startkidani='sshuttle --pidfile=/tmp/sshuttle.pid -Dr kidanivillage 0/0'
     alias startckd='sshuttle --pidfile=/tmp/sshuttle.pid -Dr server@81.138.8.156 0/0'
     alias stopsshuttle='[[ -f /tmp/sshuttle.pid ]] && sudo kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
+    alias weather='curl wttr.in'
+    alias whatip='curl https://icanhazip.com'
+
