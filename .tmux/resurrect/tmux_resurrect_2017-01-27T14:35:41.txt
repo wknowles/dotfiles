@@ -1,0 +1,5 @@
+pane	default	1	:bash	1	:*	0	:/Users/will	1	bash	:
+pane	default	1	:bash	1	:*	1	:/Users/will	0	mosh-client	:/usr/local/Cellar/mobile-shell/1.2.6_3/bin/mosh-client -# -p 20220 jambohouse | 185.164.136.111 20220
+pane	default	1	:bash	1	:*	2	:/Users/will	0	mosh-client	:/usr/local/Cellar/mobile-shell/1.2.6_3/bin/mosh-client -# -p 7820 kidanivillage | 104.161.79.77 7820
+window	default	1	1	:*	6c0e,178x48,0,0{102x48,0,0,1,75x48,103,0[75x23,103,0,2,75x24,103,24,3]}
+state	default	

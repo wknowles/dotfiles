@@ -3,7 +3,11 @@
     #export PS1='\$ '
     #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt) [\j] $ "
     #export PS1="(\j) \[\033[1;33m\]\w\[\033[m\]\$(git_prompt) $ "
-    export PS1="\e[45m \033[1;33m\w \e[m\e  $(git_prompt) (\j)  "
+    export PS1="\e[45m\033[1;33m\w\e[m \e\`git_prompt\`\[\e[m\]\n\[\e[0;34m\]\u@\h:\[\e[m\] "
+    # # for terminal line coloring
+    # export PS1="\[$(tput setaf 4)\]\w\n\[$(tput setaf 2)\]"
+    # none="$(tput sgr0)"
+    # trap 'echo -ne "${none}"' DEBUG
     #export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\`git_prompt\`\`jobs_count\`\n\$ "
     #export PS1='\[\e[1;37m\]\w\[\e[m\]\[\e[1;33m\]\[\e[34m\] [\j]\[\e[m\] $ '
 

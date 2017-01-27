@@ -1,0 +1,5 @@
+pane	default	1	:bash	1	:*	0	:/Users/will	0	bash	:
+pane	default	1	:bash	1	:*	1	:/Users/will	0	ssh	:ssh jambohouse
+pane	default	1	:bash	1	:*	2	:/Users/will	1	bash	:
+window	default	1	1	:*	5319,178x48,0,0{72x48,0,0,1,105x48,73,0[105x26,73,0,2,105x21,73,27,3]}
+state	default	

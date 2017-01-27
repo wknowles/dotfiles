@@ -1,0 +1,5 @@
+pane	default	1	:bash	1	:*	0	:/Users/will	0	bash	:
+pane	default	1	:bash	1	:*	1	:/Users/will	0	bash	:
+pane	default	1	:bash	1	:*	2	:/Users/will	1	bash	:
+window	default	1	1	:*	a01c,178x47,0,0{89x47,0,0,0,88x47,90,0[88x23,90,0,1,88x23,90,24,2]}
+state	default	

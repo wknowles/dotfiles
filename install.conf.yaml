@@ -10,6 +10,8 @@
     ~/.bash_profile: .bash_profile
     ~/.nanorc: .nanorc
     ~/.gemrc: .gemrc
+    ~/.tmux.conf: .tmux.conf
+    ~/.tmux: .tmux
     ~/.gitconfig: .gitconfig
     ~/.gitexcludes: .gitexcludes
     ~/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings: sublime-text-3/Package Control.sublime-settings
