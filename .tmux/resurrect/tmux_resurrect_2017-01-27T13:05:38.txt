@@ -1,5 +1,0 @@
-pane	default	1	:ssh	1	:*	0	:/Users/will	0	bash	:
-pane	default	1	:ssh	1	:*	1	:/Users/will	0	bash	:
-pane	default	1	:ssh	1	:*	2	:/Users/will	1	ssh	:ssh kidanivillage
-window	default	1	1	:*	f41f,178x48,0,0{89x48,0,0,1,88x48,90,0[88x24,90,0,0,88x23,90,25,2]}
-state	default	
