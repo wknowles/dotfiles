@@ -1,38 +1,38 @@
 #   Change Prompt
-#   ------------------------------------------------------------
-    #export PS1='\$ '
-    #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_prompt) [\j] $ "
-    #export PS1="(\j) \[\033[1;33m\]\w\[\033[m\]\$(git_prompt) $ "
-    export PS1="\e[45m\033[1;33m\w\e[m \e\`git_prompt\`\[\e[m\]\n\[\e[0;34m\]\u@\h:\[\e[m\] "
-    # # for terminal line coloring
-    # export PS1="\[$(tput setaf 4)\]\w\n\[$(tput setaf 2)\]"
-    # none="$(tput sgr0)"
-    # trap 'echo -ne "${none}"' DEBUG
-    #export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\`git_prompt\`\`jobs_count\`\n\$ "
-    #export PS1='\[\e[1;37m\]\w\[\e[m\]\[\e[1;33m\]\[\e[34m\] [\j]\[\e[m\] $ '
+#   ---------------------------------------------------------------------------
+    export PS1="\[$(tput bold)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \$(git_prompt) \n\[$(tput bold)\]\\$ \[$(tput sgr0)\]"
 
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     export CLICOLOR=1
-    export LSCOLORS=ExFxBxDxCxegedabagacad
+    #export LSCOLORS=ExFxBxDxCxegedabagacad
+    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
-    # Tell grep to highlight matches
+#    Tell grep to highlight matches
+#   ---------------------------------------------------------------------------
     export GREP_OPTIONS='--color=auto'
 
 #   Set Paths
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     export PATH="$PATH:/Library/Frameworks/GDAL.framework/Programs"
     export PATH="$PATH:/Users/will/.scripts"
 
 #   rbenv
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     eval "$(rbenv init -)"
 
+#   private configs - not in git / dotfiles
+#   ---------------------------------------------------------------------------
+    if [ -r ~/.private.conf ]
+    then
+        source ~/.private.conf
+    fi
+
 #   Set Bash Completion and include completion features
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
       . $(brew --prefix)/share/bash-completion/bash_completion
     fi
@@ -53,16 +53,15 @@
         shopt -s "$option" 2> /dev/null;
     done;
 
-    # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+    # Add tab completion for SSH hosts based on ~/.ssh/config, ignore wildcards
     [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 #   Do not record duplicate commnands to bash history
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     export HISTCONTROL=ignoreboth:erasedups
 
 #   Git
-#   ------------------------------------------------------------
-
+#   ---------------------------------------------------------------------------
     # Git completion
     source /usr/local/etc/bash_completion.d/git-completion.bash
 
@@ -139,32 +138,22 @@ for al in `__git_aliases`; do
     function_exists $complete_fnc && __git_complete g$al $complete_func
 done
 
-#   Show number of running / background jobs in command prompt
-#   ------------------------------------------------------------
-    function jobs_count {
-        cnt=$(jobs -l | wc -l)
-        if [ $cnt -gt 0 ]; then
-            echo -ne " \e[93m${cnt}\e[m"
-        fi
-    }
-
 #   Set Default Editor (set to sublime text)
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     export EDITOR='subl -w'
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
-#   ------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     export BLOCKSIZE=1k
 
-#   -----------------------------
-#   2.  MAKE TERMINAL BETTER
-#   -----------------------------
-    alias cp='cp -iv'                           # Preferred 'cp' implementation
-    alias mv='mv -iv'                           # Preferred 'mv' implementation
-    alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-    alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
-    alias less='less -FSRXc'                    # Preferred 'less' implementation
+#   MAKE TERMINAL BETTER
+#   ---------------------------------------------------------------------------
+    alias cp='cp -iv'                           # Pref 'cp' implementation
+    alias mv='mv -iv'                           # Pref 'mv' implementation
+    alias mkdir='mkdir -pv'                     # Pref 'mkdir' implementation
+    alias ll='ls -FGlAhp'                       # Pref 'ls' implementation
+    alias less='less -FSRXc'                    # Pref 'less' implementation
     cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
     alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
     alias ..='cd ../'                           # Go back 1 directory level
@@ -184,14 +173,13 @@ done
     ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
     alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
-#   -------------------------------
-#   3.  FILE AND FOLDER MANAGEMENT
-#   -------------------------------
+#   FILE AND FOLDER MANAGEMENT
+#   ---------------------------------------------------------------------------
     zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
     alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
-#   ------------------------------------------------------
+#   ---------------------------------------------------------------------------
     cdf () {
         currFolderPath=$( /usr/bin/osascript <<EOT
             tell application "Finder"
@@ -208,34 +196,32 @@ EOT
         cd "$currFolderPath"
     }
 
-#   ---------------------------
-#   4.  SEARCHING
-#   ---------------------------
+#   SEARCHING
+#   ---------------------------------------------------------------------------
     alias qfind="find . -name "                 # qfind:    Quickly search for file
     ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
     ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
     ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
 
 #   spotlight: Search for a file using MacOS Spotlight's metadata
-#   -------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
-#   finderShowHidden:   Show hidden files in Finder
-#   finderHideHidden:   Hide hidden files in Finder
-#   -------------------------------------------------------------------
+#   Show / Hide hidden files in Finder
+#   ---------------------------------------------------------------------------
     alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
     alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
 #   mirror: use wget to mirror website. mirror(wait time, url)
-#   -------------------------------------------------------------
+#   ---------------------------------------------------------------------------
     mirror () { wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -w $1 $2; }
 
-#   ---------------------------------------
+#   ---------------------------------------------------------------------------
 #   Misc Alias'
-#   ---------------------------------------
+#   ---------------------------------------------------------------------------
     alias bashrc='subl $HOME/Documents/github/dotfiles/.bashrc'
     alias backup='rsync -PhaEiz --stats '
-    alias editHosts='sudo subl /etc/hosts'                                    # editHosts:        Edit /etc/hosts file
+    alias editHosts='sudo subl /etc/hosts'
     alias flushdns='sudo killall -HUP mDNSResponder'
     alias startjambo='sshuttle --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'
     alias startkidani='sshuttle --pidfile=/tmp/sshuttle.pid -Dr kidanivillage 0/0'
@@ -243,4 +229,3 @@ EOT
     alias stopsshuttle='[[ -f /tmp/sshuttle.pid ]] && sudo kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
     alias weather='curl wttr.in'
     alias whatip='curl https://icanhazip.com'
-
