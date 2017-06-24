@@ -1,4 +1,9 @@
-ipv4intr=$(ifconfig venet0:0 | grep 'inet addr' | cut -d ':' -f 2 | cut -d ' ' -f 1)
+# LowEndSpirit "What's my IP?"
+# 07/10/13
+#By CSa
+
+ipv6addr=$(ip addr show dev venet0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d')
+ipv4intr=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 nodeaddr=$(wget -qO- ipecho.net/plain)
 ports=${ipv4intr#*.*.*.}
 
