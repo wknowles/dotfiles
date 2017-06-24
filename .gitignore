@@ -1,1 +1,2 @@
 .tmux/resurrect/tmux_resurrect_*
+.scripts/twitter-delete/twitter_config.rb

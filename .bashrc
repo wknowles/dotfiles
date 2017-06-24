@@ -3,8 +3,6 @@
     export PS1="\[$(tput bold)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \$(git_prompt) \n\[$(tput bold)\]\\$ \[$(tput sgr0)\]"
 
 #   Add color to terminal
-#   (this is all commented out as I use Mac Terminal Profiles)
-#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
 #   ---------------------------------------------------------------------------
     export CLICOLOR=1
     #export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -19,6 +17,8 @@
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     export PATH="$PATH:/Library/Frameworks/GDAL.framework/Programs"
     export PATH="$PATH:/Users/will/.scripts"
+    export MYSQL_PATH=/usr/local/Cellar/mysql/5.7.17
+    export PATH=$PATH:$MYSQL_PATH/bin
 
 #   rbenv
 #   ---------------------------------------------------------------------------
@@ -59,6 +59,12 @@
 #   Do not record duplicate commnands to bash history
 #   ---------------------------------------------------------------------------
     export HISTCONTROL=ignoreboth:erasedups
+
+  # append history entries..
+    shopt -s histappend
+
+  # After each command, save and reload history
+    export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 #   Git
 #   ---------------------------------------------------------------------------
@@ -216,6 +222,10 @@ EOT
 #   ---------------------------------------------------------------------------
     mirror () { wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -w $1 $2; }
 
+#   anybar: setup alias
+#   ---------------------------------------------------------------------------
+    function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
+
 #   ---------------------------------------------------------------------------
 #   Misc Alias'
 #   ---------------------------------------------------------------------------
@@ -223,9 +233,9 @@ EOT
     alias backup='rsync -PhaEiz --stats '
     alias editHosts='sudo subl /etc/hosts'
     alias flushdns='sudo killall -HUP mDNSResponder'
-    alias startjambo='sshuttle --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'
-    alias startkidani='sshuttle --pidfile=/tmp/sshuttle.pid -Dr kidanivillage 0/0'
-    alias startckd='sshuttle --pidfile=/tmp/sshuttle.pid -Dr server@81.138.8.156 0/0'
+    alias startjambo='sshuttle --dns --pidfile=/tmp/sshuttle.pid -Dr jambohouse 0/0'
+    alias startkidani='sshuttle --dns --pidfile=/tmp/sshuttle.pid -Dr kidanivillage 0/0'
+    alias startckd='sshuttle --dns --pidfile=/tmp/sshuttle.pid -Dr server@81.138.8.156 0/0'
     alias stopsshuttle='[[ -f /tmp/sshuttle.pid ]] && sudo kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
     alias weather='curl wttr.in'
     alias whatip='curl https://icanhazip.com'
